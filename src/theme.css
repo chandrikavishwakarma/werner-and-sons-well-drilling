@@ -619,6 +619,88 @@ body.nav-open .header {
 }
 .strata svg { width: 100%; height: 100%; display: block; }
 
+/* ---------- Cinematic Hero Entrance Animation (Home Page) ---------- */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageSettle {
+  0% {
+    opacity: 0.88;
+    transform: scale(1.038);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroBadgeFadeIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-10deg) scale(1);
+  }
+}
+
+.hero-cinematic .eyebrow {
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.hero-cinematic h1 {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+}
+
+.hero-cinematic .lead {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+}
+
+.hero-cinematic .hero-actions {
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
+}
+
+.hero-cinematic .hero-trust {
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+}
+
+.hero-cinematic .hero-photo img,
+.hero-cinematic .hero-photo-sm img {
+  animation: heroImageSettle 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  transform-origin: center center;
+}
+
+.hero-cinematic .hero-badge {
+  animation: heroBadgeFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinematic .eyebrow,
+  .hero-cinematic h1,
+  .hero-cinematic .lead,
+  .hero-cinematic .hero-actions,
+  .hero-cinematic .hero-trust,
+  .hero-cinematic .hero-photo img,
+  .hero-cinematic .hero-photo-sm img,
+  .hero-cinematic .hero-badge {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-cinematic .hero-badge {
+    transform: rotate(-10deg) !important;
+  }
+}
+
 /* ---------- Stat Strip (Heritage Ticket Strip) ---------- */
 .stats { position: relative; margin-top: -60px; z-index: 2; }
 .stats-grid {
