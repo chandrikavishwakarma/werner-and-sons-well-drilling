@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { Link } from '../context/NavigationContext';
 import { useLightbox } from '../context/LightboxContext';
 import Strata from '../components/Strata';
@@ -8,6 +8,8 @@ import galleryImages from '../data/galleryImages';
 export default function GalleryPage() {
   const { openLightbox } = useLightbox();
   const [activeCategory, setActiveCategory] = useState('All Photos');
+  const gridRef = useRef(null);
+
   const categories = useMemo(
     () => ['All Photos', ...new Set(galleryImages.map((image) => image.category).filter(Boolean))],
     []
@@ -15,6 +17,36 @@ export default function GalleryPage() {
   const visibleImages = activeCategory === 'All Photos'
     ? galleryImages
     : galleryImages.filter((image) => image.category === activeCategory);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const items = grid.querySelectorAll('.gallery-image-reveal');
+    if (!items.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((item) => item.classList.add('in'));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+          } else {
+            entry.target.classList.remove('in');
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    items.forEach((item) => io.observe(item));
+
+    return () => io.disconnect();
+  }, [visibleImages]);
 
   return (
     <>
@@ -50,12 +82,12 @@ export default function GalleryPage() {
           <p className="gallery-result-count" role="status" aria-live="polite">
             Showing {visibleImages.length} of {galleryImages.length} photos
           </p>
-          <div className="gallery-grid reveal">
+          <div ref={gridRef} className="gallery-grid">
             {visibleImages.map((img, idx) => (
               <a
                 key={img.id}
                 href={img.src}
-                className={img.className}
+                className={`${img.className ? `${img.className} ` : ''}gallery-image-reveal`}
                 onClick={(e) => {
                   e.preventDefault();
                   openLightbox(visibleImages, idx, e.currentTarget);

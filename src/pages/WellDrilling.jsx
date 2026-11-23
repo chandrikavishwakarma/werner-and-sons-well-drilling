@@ -30,7 +30,7 @@ export default function WellDrilling() {
               Werner &amp; Sons Well Drilling LLC offers well drilling services for all types of water wells. Our team specializes in an effective, time-tested technique: <strong>cable tool drilling</strong>.
             </p>
             <div className="feature-grid">
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z" />
@@ -40,7 +40,7 @@ export default function WellDrilling() {
                 <h3>Nothing artificial added</h3>
                 <p>No fluids, foams or oils &mdash; only water in your well.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2L2 7l10 5 10-5z" />
@@ -50,7 +50,7 @@ export default function WellDrilling() {
                 <h3>Protects formations</h3>
                 <p>No high-pressure air to collapse or clog porous rock.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2v20M8 5h4M8 9h4M8 13h4M8 17h4" />
@@ -60,7 +60,7 @@ export default function WellDrilling() {
                 <h3>Priced by the foot</h3>
                 <p>You&rsquo;re typically charged per foot drilled, not per hour.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 14l4-4" />
@@ -71,11 +71,11 @@ export default function WellDrilling() {
                 <p>A well that serves you for decades with less maintenance.</p>
               </div>
             </div>
-            <div className="inline-photo">
+            <div className="inline-photo editorial-photo-reveal reveal">
               <img src="/assets/g10.jpg" alt="Werner &amp; Sons cable tool rigs drilling on residential properties" width="800" height="450" loading="lazy" decoding="async" />
             </div>
             <h2>Consider the advantages of cable tool drilling</h2>
-            <div className="faq-list">
+            <div className="faq-list reveal">
               <details className="faq" open>
                 <summary>Why go with the cable tool method?</summary>
                 <p>

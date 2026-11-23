@@ -83,24 +83,36 @@ function AppContent() {
   }, [currentPath]);
 
   useEffect(() => {
-    const items = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((en) => {
-            if (en.isIntersecting) {
-              en.target.classList.add('in');
-              io.unobserve(en.target);
-            }
-          });
-        },
-        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-      );
-      items.forEach((el) => io.observe(el));
-      return () => io.disconnect();
-    } else {
-      items.forEach((el) => el.classList.add('in'));
-    }
+    let io;
+    const initObserver = () => {
+      const items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        if (io) io.disconnect();
+        io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add('in');
+              } else {
+                en.target.classList.remove('in');
+              }
+            });
+          },
+          { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('in'));
+      }
+    };
+
+    initObserver();
+    const raf = requestAnimationFrame(initObserver);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      if (io) io.disconnect();
+    };
   }, [currentPath]);
 
   const renderPage = () => {

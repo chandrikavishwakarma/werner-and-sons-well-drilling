@@ -4,7 +4,7 @@ export default function Sidebar() {
   const { currentPath } = useNavigation();
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar reveal">
       <div className="side-card side-card--dark">
         <h3>Need help today?</h3>
         <p>Phones are answered 24 hours a day for emergency service.</p>

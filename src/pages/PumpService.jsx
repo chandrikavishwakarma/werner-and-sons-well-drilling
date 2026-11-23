@@ -30,7 +30,7 @@ export default function PumpService() {
               Our company installs <strong>J-class submersible pumps</strong>. Whether you need a new pump for a freshly drilled well, a replacement for a worn-out unit, or a repair, our team gets your water running again quickly.
             </p>
             <div className="feature-grid">
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z" />
@@ -39,7 +39,7 @@ export default function PumpService() {
                 <h3>Pump Service &amp; Repair</h3>
                 <p>Prompt diagnosis and repair to restore your water supply.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 14l4-4" />
@@ -49,7 +49,7 @@ export default function PumpService() {
                 <h3>New Pump Installation</h3>
                 <p>Correctly sized J-class submersible pumps for your well.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2L2 7l10 5 10-5z" />
@@ -59,7 +59,7 @@ export default function PumpService() {
                 <h3>Pressure &amp; Holding Tanks</h3>
                 <p>Champion&reg; and WELL-X-TROL&reg; tank installation.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -70,7 +70,7 @@ export default function PumpService() {
                 <p>Pump stopped working? Call any time, day or night.</p>
               </div>
             </div>
-            <div className="inline-photo">
+            <div className="inline-photo editorial-photo-reveal reveal">
               <img
                 src="/assets/g1.jpg"
                 alt="Werner &amp; Sons service truck at a customer&rsquo;s home"
@@ -117,7 +117,7 @@ export default function PumpService() {
               </li>
             </ul>
             <h2>Frequently asked questions about well pumps &amp; service</h2>
-            <div className="faq-list">
+            <div className="faq-list reveal">
               <details className="faq" open>
                 <summary>What are the most common signs of a failing well pump?</summary>
                 <p>
