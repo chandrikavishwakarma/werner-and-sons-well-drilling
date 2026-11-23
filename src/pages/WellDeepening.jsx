@@ -71,6 +71,33 @@ export default function WellDeepening() {
                 <strong>Signs it&rsquo;s time for a new tank:</strong> visible rust, leaks, water pressure that swings up and down, or a pump that clicks on and off frequently.
               </p>
             </div>
+            <h2>Frequently asked questions about well deepening &amp; tanks</h2>
+            <div className="faq-list">
+              <details className="faq" open>
+                <summary>When should well deepening be considered?</summary>
+                <p>
+                  Deepening an existing well is typically considered when a well&rsquo;s water output has dropped over time, when household water needs have increased, or during extended dry periods. Deepening allows you to tap deeper water-bearing formations using your existing well casing and location, avoiding the added expense and property disruption of drilling an entirely new well from scratch.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>What are common signs that a well needs assessment?</summary>
+                <p>
+                  Common signs include noticeably reduced water pressure, air sputtering from household faucets, running out of water during heavy household usage, or a pump that runs much longer than normal to fill the pressure tank. These indicators often point to a shifting water table or a need for tank or pump maintenance.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>What happens during an initial well assessment?</summary>
+                <p>
+                  During an initial assessment, we examine your existing well head, pressure tank condition, and water delivery symptoms. We evaluate whether the issue stems from your pressure tank, pump, or the well depth itself, and discuss practical recommendations so you can make an informed decision before any work proceeds.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>What information should I provide when requesting an estimate?</summary>
+                <p>
+                  It is helpful to share the approximate age of your well, where it is located on your property, the symptoms you are noticing (such as low pressure or pump cycling), and whether you have any previous drilling records or well completion reports.
+                </p>
+              </details>
+            </div>
           </div>
           <Sidebar />
         </div>

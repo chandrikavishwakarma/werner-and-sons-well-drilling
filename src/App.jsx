@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { NavigationProvider, useNavigation } from './context/NavigationContext';
 import { LightboxProvider } from './context/LightboxContext';
 import Topbar from './components/Topbar';
@@ -12,6 +12,7 @@ import WaterTreatment from './pages/WaterTreatment';
 import PumpService from './pages/PumpService';
 import GalleryPage from './pages/GalleryPage';
 import EstimatePage from './pages/EstimatePage';
+import ResourcesPage from './pages/ResourcesPage';
 
 const pageMetadata = {
   '/': {
@@ -42,10 +43,16 @@ const pageMetadata = {
     title: 'Request a Free Estimate | Werner & Sons Well Drilling',
     description: 'Request a free estimate for well drilling, well deepening, water treatment or pump service from Werner & Sons in Easton, Pennsylvania.',
   },
+  '/resources': {
+    title: 'Well & Water Resources | Werner & Sons Well Drilling',
+    description: 'Homeowner information about planning a well project, water quality, well output, and pump concerns from Werner & Sons Well Drilling.',
+  },
 };
 
 function AppContent() {
   const { currentPath } = useNavigation();
+  const [routeAnnouncement, setRouteAnnouncement] = useState('');
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     const metadata = pageMetadata[currentPath] || pageMetadata['/'];
@@ -55,6 +62,24 @@ function AppContent() {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', metadata.description);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', metadata.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', metadata.description);
+
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    const pageName = metadata.title.split('|')[0].trim();
+    setRouteAnnouncement(`Navigated to ${pageName}`);
+
+    if (!window.location.hash) {
+      requestAnimationFrame(() => {
+        const heading = document.querySelector('main h1');
+        if (heading) {
+          heading.setAttribute('tabindex', '-1');
+          heading.focus({ preventScroll: true });
+        }
+      });
+    }
   }, [currentPath]);
 
   useEffect(() => {
@@ -92,6 +117,8 @@ function AppContent() {
         return <GalleryPage />;
       case '/estimate':
         return <EstimatePage />;
+      case '/resources':
+        return <ResourcesPage />;
       case '/':
       default:
         return <Home />;
@@ -103,6 +130,9 @@ function AppContent() {
       <a className="skip" href="#main" style={{ position: 'absolute', left: '-9999px' }}>
         Skip to content
       </a>
+      <div id="route-announcer" className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {routeAnnouncement}
+      </div>
       <Topbar />
       <Header />
       <main id="main">{renderPage()}</main>

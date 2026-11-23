@@ -116,6 +116,33 @@ export default function PumpService() {
                 </span>
               </li>
             </ul>
+            <h2>Frequently asked questions about well pumps &amp; service</h2>
+            <div className="faq-list">
+              <details className="faq" open>
+                <summary>What are the most common signs of a failing well pump?</summary>
+                <p>
+                  Common warning signs include complete loss of water, faucets that sputter air, water pressure that fluctuates dramatically during showers, clicking noises from the pressure switch as the pump cycles on and off, or a pump motor that runs continuously without building sufficient pressure.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>Why is my well pump running constantly or cycling rapidly?</summary>
+                <p>
+                  A pump that runs non-stop or turns on and off rapidly is commonly caused by a waterlogged or leaking pressure tank, a malfunctioning pressure switch, a leak in the underground supply line, or a worn pump impeller. Rapid cycling strains the motor and should be addressed promptly to avoid pump failure.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>When should I call for emergency pump repair?</summary>
+                <p>
+                  If you have completely lost water, notice an electrical burning smell near your pump control box, or hear your pump running non-stop without shutting off, call immediately. Our phones are answered 24 hours a day for emergency service, including nights, weekends, and holidays.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>What details should I have ready when calling for pump service?</summary>
+                <p>
+                  Having a few basic details ready helps our technicians diagnose the issue quickly: whether you have complete water loss or low pressure, whether you hear clicking at the tank, where your well head and tank are located, and whether the pump&rsquo;s electrical breaker has tripped.
+                </p>
+              </details>
+            </div>
           </div>
           <Sidebar />
         </div>

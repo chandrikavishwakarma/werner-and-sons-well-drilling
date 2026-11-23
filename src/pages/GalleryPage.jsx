@@ -1,28 +1,20 @@
+import { useMemo, useState } from 'react';
 import { Link } from '../context/NavigationContext';
 import { useLightbox } from '../context/LightboxContext';
 import Strata from '../components/Strata';
 import CtaBand from '../components/CtaBand';
+import galleryImages from '../data/galleryImages';
 
 export default function GalleryPage() {
   const { openLightbox } = useLightbox();
-
-  const galleryImages = [
-    { src: '/assets/g3.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 1', class: 'wide' },
-    { src: '/assets/g9.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 2', class: 'tall' },
-    { src: '/assets/g2.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 3', class: 'tall' },
-    { src: '/assets/g4.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 4', class: '' },
-    { src: '/assets/g10.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 5', class: '' },
-    { src: '/assets/g5.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 6', class: 'wide' },
-    { src: '/assets/drilling.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 7', class: 'tall' },
-    { src: '/assets/g7.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 8', class: '' },
-    { src: '/assets/g1.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 9', class: 'tall' },
-    { src: '/assets/g6.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 10', class: '' },
-    { src: '/assets/g11.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 11', class: 'tall' },
-    { src: '/assets/g8.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 12', class: 'wide' },
-    { src: '/assets/about.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 13', class: '' },
-    { src: '/assets/deepening.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 14', class: '' },
-    { src: '/assets/treatment.jpg', alt: 'Werner & Sons Well Drilling \u2014 photo 15', class: '' },
-  ];
+  const [activeCategory, setActiveCategory] = useState('All Photos');
+  const categories = useMemo(
+    () => ['All Photos', ...new Set(galleryImages.map((image) => image.category).filter(Boolean))],
+    []
+  );
+  const visibleImages = activeCategory === 'All Photos'
+    ? galleryImages
+    : galleryImages.filter((image) => image.category === activeCategory);
 
   return (
     <>
@@ -42,19 +34,35 @@ export default function GalleryPage() {
 
       <section className="section">
         <div className="container">
-          <div className="gallery-grid">
-            {galleryImages.map((img, idx) => (
+          <div className="gallery-filter-bar" role="group" aria-label="Filter gallery photos">
+            {categories.map((category) => (
+              <button
+                type="button"
+                key={category}
+                className={`gallery-filter${activeCategory === category ? ' active' : ''}`}
+                aria-pressed={activeCategory === category}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          <p className="gallery-result-count" role="status" aria-live="polite">
+            Showing {visibleImages.length} of {galleryImages.length} photos
+          </p>
+          <div className="gallery-grid reveal">
+            {visibleImages.map((img, idx) => (
               <a
-                key={idx}
+                key={img.id}
                 href={img.src}
-                className={`${img.class} reveal`}
+                className={img.className}
                 onClick={(e) => {
                   e.preventDefault();
-                  openLightbox(galleryImages, idx, e.currentTarget);
+                  openLightbox(visibleImages, idx, e.currentTarget);
                 }}
               >
                 <img src={img.src} alt={img.alt} width="600" height="450" loading="lazy" decoding="async" />
-                <span className="zoom">
+                <span className="zoom" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
                     <circle cx="11" cy="11" r="7" />
                     <path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />

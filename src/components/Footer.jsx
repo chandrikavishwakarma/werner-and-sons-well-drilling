@@ -43,6 +43,7 @@ export default function Footer() {
           <ul>
             <li><Link href="/#about">About Us</Link></li>
             <li><Link href="/gallery">Gallery</Link></li>
+            <li><Link href="/resources">Homeowner Resources</Link></li>
             <li><Link href="/estimate">Free Estimate</Link></li>
             <li><Link href="/#area">Service Area</Link></li>
           </ul>

@@ -74,6 +74,33 @@ export default function WaterTreatment() {
                 We install <strong>ATS&reg; water purification systems</strong> &mdash; and our professional team provides fast, friendly and affordable service on all internal systems.
               </p>
             </div>
+            <h2>Frequently asked questions about water treatment</h2>
+            <div className="faq-list">
+              <details className="faq" open>
+                <summary>What are the most common signs of well water problems?</summary>
+                <p>
+                  Common signs include reddish-brown or orange staining on plumbing fixtures (indicating iron), white crusty mineral deposits on faucets and shower heads (hard water scale), blue-green staining on copper pipes and porcelain (acidic water corroding plumbing), rotten-egg or sulfur odors, cloudy sediment, or a metallic taste.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>What water treatment systems are available for my home?</summary>
+                <p>
+                  Depending on your water symptoms, available systems include water softeners for hard water and mineral scale, specialized iron filters to stop staining, acid neutralizers to raise low pH and protect pipes, and ultraviolet (UV) light purification systems for chemical-free disinfection.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>How do I know which water treatment system I need?</summary>
+                <p>
+                  Because every private well and local geological formation is different, the best place to start is describing the specific symptoms you notice in your fixtures, laundry, taste, or smell. We evaluate your well setup and water symptoms to recommend the right equipment suited for your household size.
+                </p>
+              </details>
+              <details className="faq">
+                <summary>What should I have ready when requesting an estimate?</summary>
+                <p>
+                  Tell us what water symptoms you are experiencing, whether you currently have any existing filtration or softener units in your home, and whether you are noticing staining, pressure changes, or taste concerns. We provide free estimates and will come directly to your property.
+                </p>
+              </details>
+            </div>
             <h2>Not sure what your water needs?</h2>
             <p>
               Tell us what you&rsquo;re noticing &mdash; bad taste or odor, staining, scale build-up, or concerns about safety &mdash; and we&rsquo;ll recommend the right system for your well.

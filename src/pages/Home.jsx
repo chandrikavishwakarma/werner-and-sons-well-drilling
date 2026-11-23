@@ -2,21 +2,13 @@ import { Link } from '../context/NavigationContext';
 import { useLightbox } from '../context/LightboxContext';
 import Strata from '../components/Strata';
 import CtaBand from '../components/CtaBand';
+import ServiceAreaMap from '../components/ServiceAreaMap';
+import CustomerReviews from '../components/CustomerReviews';
+import { homeGalleryImages } from '../data/galleryImages';
 
 export default function Home() {
   const { openLightbox } = useLightbox();
-
-  const galleryImages = [
-    { src: '/assets/g3.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: 'wide' },
-    { src: '/assets/g9.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: 'tall' },
-    { src: '/assets/g4.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: '' },
-    { src: '/assets/g10.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: '' },
-    { src: '/assets/g6.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: 'wide' },
-    { src: '/assets/drilling.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: '' },
-    { src: '/assets/g8.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: '' },
-    { src: '/assets/g5.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: '' },
-    { src: '/assets/g2.jpg', alt: 'Werner & Sons drilling equipment and job sites', class: '' },
-  ];
+  const galleryImages = homeGalleryImages;
 
   return (
     <>
@@ -360,16 +352,7 @@ export default function Home() {
               </li>
             </ul>
 
-            <div className="heritage-trust-quote">
-              <span className="quote-mark" aria-hidden="true">&#8220;</span>
-              <p className="quote-text">
-                Prompt, professional service you can count on &mdash; just ask your neighbors.
-              </p>
-              <div className="quote-meta">
-                <span className="quote-stars" aria-label="5 star service">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <span className="quote-badge">50+ Years Serving Eastern Pennsylvania</span>
-              </div>
-            </div>
+            <CustomerReviews />
 
             <Link className="btn btn--red" href="/estimate">
               Request an Estimate{' '}
@@ -401,13 +384,7 @@ export default function Home() {
               <span className="region-bullet">&#9670;</span>
               <span>Serving Eastern PA &middot; Lehigh Valley &amp; The Poconos</span>
             </div>
-            <ul className="county-list">
-              <li>Northampton County</li>
-              <li>Lehigh County</li>
-              <li>Monroe County</li>
-              <li>Carbon County</li>
-              <li>The Poconos</li>
-            </ul>
+            <ServiceAreaMap />
           </div>
           <div className="info-cards reveal">
             <div className="info-card info-card--accent">
@@ -491,7 +468,7 @@ export default function Home() {
               <a
                 key={idx}
                 href={img.src}
-                className={img.class}
+                className={img.className}
                 onClick={(e) => {
                   e.preventDefault();
                   openLightbox(galleryImages, idx, e.currentTarget);
