@@ -50,14 +50,14 @@ export default function ResourcesPage() {
 
       <section className="section section--white" aria-labelledby="resource-library-title">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head reveal">
             <span className="eyebrow">Browse by topic</span>
             <h2 id="resource-library-title">Start with a question</h2>
             <p className="lead">These guides provide general information. They are not a diagnosis or a substitute for local requirements or professional advice.</p>
           </div>
           <div className="resource-card-grid">
             {resources.map((resource) => (
-              <article className="resource-card" key={resource.id}>
+              <article className="resource-card reveal" key={resource.id}>
                 <span className="resource-category">{resource.category}</span>
                 <h3>{resource.title}</h3>
                 <p>{resource.summary}</p>
@@ -71,7 +71,7 @@ export default function ResourcesPage() {
       </section>
 
       <section className="section" aria-label="Educational guides">
-        <div className="container resource-articles">
+        <div className="container resource-articles reveal">
           <article className="resource-article" id="planning-a-well-project" tabIndex={-1}>
             <span className="eyebrow">Well Drilling</span>
             <h2>Planning a new well project</h2>

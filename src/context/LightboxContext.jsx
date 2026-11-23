@@ -7,14 +7,27 @@ const LightboxContext = createContext({
 
 export function LightboxProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const triggerRef = useRef(null);
   const closeButtonRef = useRef(null);
   const dialogRef = useRef(null);
   const previousOverflowRef = useRef('');
+  const closingTimeoutRef = useRef(null);
+  const isClosingRef = useRef(false);
+
+  useEffect(() => {
+    isClosingRef.current = isClosing;
+  }, [isClosing]);
 
   const openLightbox = (imageList, index = 0, trigger = document.activeElement) => {
+    if (closingTimeoutRef.current) {
+      clearTimeout(closingTimeoutRef.current);
+      closingTimeoutRef.current = null;
+    }
+    isClosingRef.current = false;
+    setIsClosing(false);
     triggerRef.current = trigger;
     setImages(imageList);
     setCurrentIndex(index);
@@ -22,16 +35,50 @@ export function LightboxProvider({ children }) {
   };
 
   const closeLightbox = useCallback(() => {
-    setIsOpen(false);
-  }, []);
+    if (!isOpen || isClosingRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      if (closingTimeoutRef.current) {
+        clearTimeout(closingTimeoutRef.current);
+        closingTimeoutRef.current = null;
+      }
+      isClosingRef.current = false;
+      setIsClosing(false);
+      setIsOpen(false);
+      return;
+    }
+
+    isClosingRef.current = true;
+    setIsClosing(true);
+    closingTimeoutRef.current = setTimeout(() => {
+      isClosingRef.current = false;
+      setIsClosing(false);
+      setIsOpen(false);
+      closingTimeoutRef.current = null;
+    }, 240);
+  }, [isOpen]);
 
   const showNext = useCallback(() => {
+    if (isClosingRef.current) return;
     setCurrentIndex((prev) => (prev + 1) % images.length);
   }, [images.length]);
 
   const showPrev = useCallback(() => {
+    if (isClosingRef.current) return;
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
+
+  useEffect(() => {
+    return () => {
+      if (closingTimeoutRef.current) {
+        clearTimeout(closingTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -40,6 +87,7 @@ export function LightboxProvider({ children }) {
     closeButtonRef.current?.focus();
 
     const handleKeyDown = (e) => {
+      if (isClosingRef.current) return;
       if (e.key === 'Escape') {
         e.preventDefault();
         closeLightbox();
@@ -81,13 +129,13 @@ export function LightboxProvider({ children }) {
 
   return (
     <LightboxContext.Provider value={{ openLightbox, closeLightbox }}>
-      <div inert={isOpen} aria-hidden={isOpen || undefined}>
+      <div inert={isOpen && !isClosing} aria-hidden={(isOpen && !isClosing) || undefined}>
         {children}
       </div>
       {isOpen && (
         <div
           ref={dialogRef}
-          className="lightbox open"
+          className={`lightbox open${isClosing ? ' closing' : ''}`}
           role="dialog"
           aria-modal="true"
           aria-label="Photo viewer"

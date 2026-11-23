@@ -33,7 +33,7 @@ export default function WellDeepening() {
               When your well is older, you may need us to remove sediment and other materials to reach the water again. Let us dig deeper to get you back to a reliable water source.
             </p>
             <div className="feature-grid">
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" />
@@ -43,7 +43,7 @@ export default function WellDeepening() {
                 <h3>Running low or dry?</h3>
                 <p>Older wells can lose output as sediment builds up or water tables shift.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -54,25 +54,25 @@ export default function WellDeepening() {
                 <p>Deepening safely restores your existing well &mdash; no need to start over.</p>
               </div>
             </div>
-            <div className="inline-photo">
+            <div className="inline-photo editorial-photo-reveal reveal">
               <img src="/assets/g11.jpg" alt="Drilling rig deepening a residential well" width="800" height="450" loading="lazy" decoding="async" />
             </div>
             <h2>Well tanks</h2>
             <p>
               Over time, water tanks wear out. When they&rsquo;re becoming rusty or ineffective, it&rsquo;s time to change them. We install all types of holding tanks and pressure tanks for your home or business, including:
             </p>
-            <div className="brand-row">
+            <div className="brand-row reveal">
               <span className="brand-chip">Champion&reg;</span>
               <span className="brand-chip">WELL-X-TROL&reg;</span>
               <span className="brand-chip">J-Class Water Pumps</span>
             </div>
-            <div className="callout">
+            <div className="callout reveal">
               <p>
                 <strong>Signs it&rsquo;s time for a new tank:</strong> visible rust, leaks, water pressure that swings up and down, or a pump that clicks on and off frequently.
               </p>
             </div>
             <h2>Frequently asked questions about well deepening &amp; tanks</h2>
-            <div className="faq-list">
+            <div className="faq-list reveal">
               <details className="faq" open>
                 <summary>When should well deepening be considered?</summary>
                 <p>

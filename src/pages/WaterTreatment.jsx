@@ -30,7 +30,7 @@ export default function WaterTreatment() {
               Does your water taste bad? We work on all internal water purification systems. Taste the difference when we install a new system in your home or business &mdash; it doesn&rsquo;t just make water taste better, it makes it healthier to drink.
             </p>
             <div className="feature-grid">
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2.7l5.7 5.7a8 8 0 1 1-11.3 0z" />
@@ -39,7 +39,7 @@ export default function WaterTreatment() {
                 <h3>Water Softeners</h3>
                 <p>Reduce hard-water scale on fixtures, appliances and water heaters.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 3H2l8 9.5V19l4 2v-8.5z" />
@@ -48,7 +48,7 @@ export default function WaterTreatment() {
                 <h3>Iron Removal Units</h3>
                 <p>Say goodbye to orange stains and that metallic taste.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M9 3h6M10 3v6L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 9V3" />
@@ -58,7 +58,7 @@ export default function WaterTreatment() {
                 <h3>Acid Neutralizers</h3>
                 <p>Balance acidic water that can corrode pipes and plumbing.</p>
               </div>
-              <div className="feature">
+              <div className="feature reveal">
                 <div className="ico">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="4" />
@@ -69,13 +69,13 @@ export default function WaterTreatment() {
                 <p>Chemical-free disinfection for safer drinking water.</p>
               </div>
             </div>
-            <div className="callout">
+            <div className="callout reveal">
               <p>
                 We install <strong>ATS&reg; water purification systems</strong> &mdash; and our professional team provides fast, friendly and affordable service on all internal systems.
               </p>
             </div>
             <h2>Frequently asked questions about water treatment</h2>
-            <div className="faq-list">
+            <div className="faq-list reveal">
               <details className="faq" open>
                 <summary>What are the most common signs of well water problems?</summary>
                 <p>
