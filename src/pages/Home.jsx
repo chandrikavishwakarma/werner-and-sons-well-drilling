@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero hero-cinematic">
         <div className="container">
           <div className="hero-content">
             <span className="eyebrow">Water Well Contractor &middot; Easton, PA</span>
