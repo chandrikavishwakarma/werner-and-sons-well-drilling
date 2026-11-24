@@ -5,7 +5,7 @@ export default function CustomerReviews() {
     <div className="customer-reviews reveal" aria-labelledby="customer-reviews-title">
       <div className="reviews-header">
         <span className="eyebrow">Customer Feedback</span>
-        <h2 id="customer-reviews-title">Selected Customer Reviews from Yelp</h2>
+        <h2 id="customer-reviews-title"> Customer Reviews from Yelp</h2>
         <p className="reviews-intro">
           Kind words from customers who have trusted Werner &amp; Sons with their water and well-service needs.
         </p>
