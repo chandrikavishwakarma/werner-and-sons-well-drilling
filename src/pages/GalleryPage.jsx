@@ -31,19 +31,22 @@ export default function GalleryPage() {
     }
 
     const io = new IntersectionObserver(
-      (entries) => {
+      (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in');
-          } else {
-            entry.target.classList.remove('in');
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
     );
 
-    items.forEach((item) => io.observe(item));
+    items.forEach((item) => {
+      if (!item.classList.contains('in')) {
+        io.observe(item);
+      }
+    });
 
     return () => io.disconnect();
   }, [visibleImages]);
@@ -88,9 +91,16 @@ export default function GalleryPage() {
                 key={img.id}
                 href={img.src}
                 className={`${img.className ? `${img.className} ` : ''}gallery-image-reveal`}
+                aria-label={`View photo: ${img.alt}`}
                 onClick={(e) => {
                   e.preventDefault();
                   openLightbox(visibleImages, idx, e.currentTarget);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+                    e.preventDefault();
+                    openLightbox(visibleImages, idx, e.currentTarget);
+                  }
                 }}
               >
                 <img src={img.src} alt={img.alt} width="600" height="450" loading="lazy" decoding="async" />
