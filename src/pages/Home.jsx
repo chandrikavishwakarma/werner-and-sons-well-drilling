@@ -352,8 +352,6 @@ export default function Home() {
               </li>
             </ul>
 
-            <CustomerReviews />
-
             <Link className="btn btn--red" href="/estimate">
               Request an Estimate{' '}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -361,6 +359,22 @@ export default function Home() {
               </svg>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Decorative Antique Brass Divider */}
+      <div className="container">
+        <div className="brass-divider">
+          <span className="line"></span>
+          <span className="symbol">&#9670;</span>
+          <span className="line"></span>
+        </div>
+      </div>
+
+      {/* Customer Reviews Section */}
+      <section className="section section--reviews" id="reviews">
+        <div className="container">
+          <CustomerReviews />
         </div>
       </section>
 
